@@ -28,6 +28,8 @@ if __name__ == '__main__':
 
     calib.calculate_transform(False)
 
+    bpost, rotations = calib.get_results()
+
     #calib.save_data(total, testname)
 
 

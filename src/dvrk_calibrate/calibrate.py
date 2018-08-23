@@ -16,13 +16,14 @@ class Calibrate:
         self.limit_psm = limit_psm
         self.limit_ecm = limit_ecm
 
+        self.bpost = np.zeros((self.num, 6))
+        self.arm_rotations = np.zeros((self.num, 4))
 
         self._interface()
         self.r = rospy.Rate(self.rate)
 
         self.r.sleep()
         print('pose:', self.arm[0].pos)
-
 
     def _interface(self):
         if not rospy.get_node_uri():
@@ -98,12 +99,12 @@ class Calibrate:
         else:
             x = 0
 
-        self.bpost = np.zeros((self.num, 6))
         for x in range(self.num):
             p, f = self._conca(self.arm[x].marker_data_pos, self.arm[x].marker_data_rot)
 
             j = np.linalg.pinv(f)
             self.bpost[x] = np.matmul(j, -p)
+            self.arm_rotations[x] = self.arm[x].arm_rot
 
     def _conca(self, positions, quaternion):
         for i in range(len(quaternion)):
@@ -118,8 +119,8 @@ class Calibrate:
 
         return array, matrix
 
-
-
+    def get_results(self):
+        return self.bpost, self.arm_rotations
 
 class DataStore:
     def __init__(self, names, list):
