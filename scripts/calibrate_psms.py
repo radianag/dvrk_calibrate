@@ -12,8 +12,8 @@ import tf
 
 
 if __name__ == '__main__':
-    x = tf.transformations.quaternion_matrix([0, 0, 0, 1])
-    print(x[0:3,0:3])
+    #x = tf.transformations.quaternion_matrix([0, 0, 0, 1])
+    #print(x[0:3,0:3])
 
     names = [('PSM1', 1, 2), ('PSM2', 4, 3)]
     testname = 'one'
@@ -29,6 +29,8 @@ if __name__ == '__main__':
     calib.calculate_transform(False)
 
     bpost, rotations = calib.get_results()
+    print("Bpost is:", bpost)
+    print("Rotations is:", rotations)
 
     #calib.save_data(total, testname)
 
