@@ -6,16 +6,13 @@
 
 from dvrk_calibrate.calibrate import Calibrate
 import rospkg
-import tf
-
-
-
 
 if __name__ == '__main__':
     #x = tf.transformations.quaternion_matrix([0, 0, 0, 1])
     #print(x[0:3,0:3])
 
-    names = [('PSM1', 1, 2), ('PSM2', 4, 3)]
+    # Names: (PSM NAME, ROTATION RIGID BODY NUM, RCM RIGID BODY NUM)
+    names = [('PSM2', 3, 4), ('PSM1', 1, 2)]
     testname = 'one'
 
     calib = Calibrate(names)
@@ -31,6 +28,8 @@ if __name__ == '__main__':
     bpost, rotations = calib.get_results()
     print("Bpost is:", bpost)
     print("Rotations is:", rotations)
+
+    #rospy.spin()
 
     #calib.save_data(total, testname)
 

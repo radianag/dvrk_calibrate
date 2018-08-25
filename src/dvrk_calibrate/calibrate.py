@@ -9,7 +9,7 @@ import cloudpickle as pickle
 
 
 class Calibrate:
-    def __init__(self, names, limit_psm=[(0.75, 0.75), (0.25, 0.75)], limit_ecm=[(0.75, 0.75), (0.25, 0.75)], rate=100):
+    def __init__(self, names, limit_psm=[(-0.75, 0.75), (-0.50, 0.6)], limit_ecm=[(-0.75, 0.75), (-0.25, 0.75)], rate=100):
 
         self.names = names
         self.num = len(names)
@@ -52,7 +52,6 @@ class Calibrate:
             else:
                 self.arm[i] = Arms(self.names[i])
 
-        rospy.spin()
 
     def calculate_transform(self, load):
         if load:
@@ -62,7 +61,7 @@ class Calibrate:
 
         for x in range(self.num):
             p, f = self._conca(self.arm[x].marker_data_pos, self.arm[x].marker_data_rot)
-
+            print(p)
             j = np.linalg.pinv(f)
             self.bpost[x] = np.matmul(j, -p)
             self.arm_rotations[x] = self.arm[x].arm_rot
@@ -70,7 +69,9 @@ class Calibrate:
     def get_results(self):
         return self.bpost, self.arm_rotations
 
-    def run_test(self, q1_num=10, final_time=2, tool_position=0.05):
+    def run_test(self, q1_num=3, final_time=2, tool_position=0.15):
+
+
         limit_q3 = tool_position
 
         tf = final_time
@@ -79,6 +80,7 @@ class Calibrate:
 
         traj_q1 = np.zeros((self.num, z))
         traj_q2 = np.zeros((self.num, z2))
+
 
         for i in range(self.num):
             if self.names[i][0:3] == 'ECM':
@@ -91,7 +93,7 @@ class Calibrate:
 
                 self.arm[i].interface.move_joint_some(np.array([self.limit_psm[0][0], self.limit_psm[1][0], limit_q3]),
                                                       np.array([0, 1, 2]))
-
+                print("it started")
                 traj_q1[i] = np.linspace(self.limit_ecm[0][0], self.limit_ecm[0][1], num=z)
                 traj_q2[i] = np.linspace(self.limit_ecm[1][0], self.limit_ecm[1][1], num=z2)
 
@@ -111,6 +113,7 @@ class Calibrate:
                 self.r.sleep()
                 j = j + 1
             i = i + 1
+            print(i)
 
         # p2.move_joint_some(np.array([-0, -0, limit_q3]), np.array([0, 1, 2]))
         # p1.move_joint_some(np.array([-0, -0, limit_q3]), np.array([0, 1, 2]))
