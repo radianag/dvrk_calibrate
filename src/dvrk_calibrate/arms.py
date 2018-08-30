@@ -27,14 +27,11 @@ class Arms:
 
     def handle_rotation(self, msg):
         self.arm_rot = np.array([msg.pose.orientation.x, msg.pose.orientation.y, msg.pose.orientation.z, msg.pose.orientation.w])
-        #print(self.arm_rot)
+
     def handle_rcm(self, msg):
         self.pos = [msg.pose.position.x, msg.pose.position.y, msg.pose.position.z]
         self.rot = [msg.pose.orientation.x, msg.pose.orientation.y, msg.pose.orientation.z, msg.pose.orientation.w]
 
-        #print(self.pos)
     def get_marker_data(self):
         self.marker_data_pos = np.append(self.marker_data_pos, [self.pos], axis=0)
         self.marker_data_rot = np.append(self.marker_data_rot, [self.rot], axis=0)
-
-        #self.matrix_rot_rcm = tf.transformations.quaternion_matrix(self.rot_rcm)

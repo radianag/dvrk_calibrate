@@ -24,7 +24,6 @@ class Calibrate:
         self.r = rospy.Rate(self.rate)
 
         self.r.sleep()
-        #print('pose:', self.arm[0].pos)
 
     def _conca(self, positions, quaternion):
         for i in range(len(quaternion)):
@@ -52,7 +51,6 @@ class Calibrate:
             else:
                 self.arm[i] = Arms(self.names[i])
 
-
     def calculate_transform(self, load):
         if load:
             x = 0
@@ -70,7 +68,6 @@ class Calibrate:
         return self.bpost, self.arm_rotations
 
     def run_test(self, q1_num=3, final_time=2, tool_position=0.15):
-
 
         limit_q3 = tool_position
 
