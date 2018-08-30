@@ -13,7 +13,6 @@ This repository has code for using daVinci research kit with ROS
 
 Radian Azhar Gondokaryono:ragondokaryono@wpi.edu
 
-
 # Packages
 
 This is a short description of the packages in this repository. The detailed explanations and instructions are available in the packages itself.
@@ -31,10 +30,18 @@ rosdep install --from-paths .
 # build
 cd ..
 catkin_make
-
 ```
 
+# Running Software
+ Launch vrpn_client_ros which publishes vrpn packages as ros topics:
+ ```
+ roslaunch vrpn_client_ros sample.launch server:=<ip_of_server_machine>
+ ``` 
+Should see connected to RigidBody# ... 
+Run Robot and calibration
+```
+ rosrun dvrk_calibrate Run_robot.py
+ ```
+
 # Dependencies
-vrpn_client_ros
-vrpn
-dvrk_robot
+vrpn_client_ros, vrpn, dvrk_robot (specifically dvrk_python)
