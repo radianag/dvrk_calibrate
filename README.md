@@ -11,7 +11,7 @@ This repository has code for using daVinci research kit with ROS
 
 # Author
 
-Radian Azhar Gondokaryono:ragondokaryono@wpi.edu
+Radian Azhar Gondokaryono: ragondokaryono@wpi.edu
 
 # Packages
 
@@ -37,11 +37,12 @@ catkin_make
  ```
  roslaunch vrpn_client_ros sample.launch server:=<ip_of_server_machine>
  ``` 
-Should see connected to RigidBody# ... 
-Run Robot and calibration
+<ip_of_server_machine> is IP address of the motive computer software. Should see connected to RigidBody# ...  
+In another terminal, run robot and calibration:
 ```
  rosrun dvrk_calibrate calibrate_psms.py
  ```
+ Done, outputs RCM positions and rotations of each robot in camera frame. 
 
 # Dependencies
 vrpn_client_ros, vrpn, dvrk_robot (specifically dvrk_python)
