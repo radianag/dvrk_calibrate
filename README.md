@@ -40,7 +40,7 @@ catkin_make
 Should see connected to RigidBody# ... 
 Run Robot and calibration
 ```
- rosrun dvrk_calibrate Run_robot.py
+ rosrun dvrk_calibrate calibrate_psms.py
  ```
 
 # Dependencies
