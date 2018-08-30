@@ -45,7 +45,7 @@ In Ubuntu desktop:
  roslaunch vrpn_client_ros sample.launch server:=<ip_of_server_machine>
  ``` 
 <ip_of_server_machine> is IP address of the motive computer software. Should see connected to RigidBody# ...  
-Setup the rigid body listener. Open file (dvrk_calibrate)/scripts/calibrate_psms.py. Edit tuples ($name, $rigidbody_number_rotation, $rigid_body_num_position). In another terminal, run robot and calibration:
+Setup the rigid body listener. Open file (dvrk_calibrate)/scripts/calibrate_psms.py. Edit tuples ($name, $rigid_body_rotation_number, $rigid_body_position_number) corresponding to each manipulator being calibrated. In another terminal, run robot and calibration:
 ```
  rosrun dvrk_calibrate calibrate_psms.py
  ```
