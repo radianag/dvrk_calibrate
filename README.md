@@ -33,7 +33,7 @@ catkin_make
 # Test Setup
 
 # Setting up Motive to Stream VRPN
-After camera calibration, select 3 markers in group, right-click, create rigid bodies. 
+After camera calibration, select 3 markers in group, right-click -> create rigid bodies. Rigid bodies will be oriented to global frame. Click view -> rigid bodies. Click on the rotation rigid bodies. Reorient the axis visually by changing the pitch, yaw, roll angles. 
 
 # Running Software
  Launch vrpn_client_ros which publishes vrpn packages as ros topics:
