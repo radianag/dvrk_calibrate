@@ -27,7 +27,7 @@ cd ..
 catkin_make
 ```
 # Test Setup
-![Image of test setup](https://github.com/radianag/dvrk_calibrate/img/rigid_body.png)
+![Image of test setup](https://github.com/radianag/dvrk_calibrate/blob/master/img/rigid_body.png)
 
 For every manipulator place two rigid bodies:
 - rigid_body_rotation: 3 markers placed on joint one of manipulator to describe manipulator rotation. The axis of three markers corresponding to the x-z axis of the manipulator.
