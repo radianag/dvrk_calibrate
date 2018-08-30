@@ -14,8 +14,7 @@ This repository has code for using daVinci research kit with ROS
 Radian Azhar Gondokaryono: ragondokaryono@wpi.edu
 
 # Packages
-
-This is a short description of the packages in this repository. The detailed explanations and instructions are available in the packages itself.
+This package uses optical trackers to calibrate the RCM position and rotation of any PSM/ECM manipulator of the da Vinci Research Kit. 
 
 # Install dvrk_calibrate and dependencies VRPN and vrpn_client_ros
 ```
@@ -31,6 +30,10 @@ rosdep install --from-paths .
 cd ..
 catkin_make
 ```
+# Test Setup
+
+# Setting up Motive to Stream VRPN
+After camera calibration, select 3 markers in group, right-click, create rigid bodies. 
 
 # Running Software
  Launch vrpn_client_ros which publishes vrpn packages as ros topics:
@@ -38,7 +41,7 @@ catkin_make
  roslaunch vrpn_client_ros sample.launch server:=<ip_of_server_machine>
  ``` 
 <ip_of_server_machine> is IP address of the motive computer software. Should see connected to RigidBody# ...  
-In another terminal, run robot and calibration:
+Setup the rigid body listener. Open file (dvrk_calibrate)/scripts/calibrate_psms.py. Edit tuples ($name, $rigidbody_number_rotation, $rigid_body_num_position). In another terminal, run robot and calibration:
 ```
  rosrun dvrk_calibrate calibrate_psms.py
  ```
