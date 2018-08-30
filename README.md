@@ -7,14 +7,11 @@ This work is unofficial, unsupported and in progress in the current location.
 
 Description
 ====================
-This repository has code for using daVinci research kit with ROS
+This package uses optical trackers to calibrate the RCM position and rotation of any PSM/ECM manipulator of the da Vinci Research Kit. 
 
 # Author
 
 Radian Azhar Gondokaryono: ragondokaryono@wpi.edu
-
-# Packages
-This package uses optical trackers to calibrate the RCM position and rotation of any PSM/ECM manipulator of the da Vinci Research Kit. 
 
 # Install dvrk_calibrate and dependencies VRPN and vrpn_client_ros
 ```
@@ -31,16 +28,18 @@ cd ..
 catkin_make
 ```
 # Test Setup
-For every manipulator place two rigid bodies which are:
+For every manipulator place two rigid bodies:
 - rigid_body_rotation: 3 markers placed on joint one of manipulator to describe manipulator rotation. The axis of three markers corresponding to the x-z axis of the manipulator.
 - rigid_body_RCM     : 3 markers placed on the parallelogram used to calibrate the RCM position
 
 # Setting up Motive to Stream VRPN
+In Windows desktop:
 After camera calibration, select 3 markers in group, right-click -> create rigid bodies. Rigid bodies will be oriented to global frame. Click view -> rigid bodies. Click on the rigid_body_rotation. Reorient the axis visually by changing the pitch, yaw, roll angles. 
 
 Click view -> Data Streaming. Click on broadcast data. Scroll down. Under VRPN tab, make port: 3883. Click on broadcast.
 
 # Running Software
+In Ubuntu desktop:
  Launch vrpn_client_ros which publishes vrpn packages as ros topics:
  ```
  roslaunch vrpn_client_ros sample.launch server:=<ip_of_server_machine>
