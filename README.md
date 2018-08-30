@@ -27,6 +27,7 @@ cd ..
 catkin_make
 ```
 # Test Setup
+
 For every manipulator place two rigid bodies:
 - rigid_body_rotation: 3 markers placed on joint one of manipulator to describe manipulator rotation. The axis of three markers corresponding to the x-z axis of the manipulator.
 - rigid_body_RCM     : 3 markers placed on the parallelogram to calibrate the RCM position
