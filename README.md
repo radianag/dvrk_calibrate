@@ -53,7 +53,7 @@ Open file (dvrk_calibrate)/scripts/calibrate_psms.py. Edit tuples ($name, $rigid
 ```
  rosrun dvrk_calibrate calibrate_psms.py
  ```
- Done, outputs RCM positions and rotations of each robot in camera frame. 
+ Done, outputs RCM positions and rotations of each manipulator in camera frame. 
 
 # Dependencies
 vrpn_client_ros, vrpn, dvrk_robot (specifically dvrk_python)
